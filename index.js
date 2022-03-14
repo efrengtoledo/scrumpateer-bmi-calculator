@@ -193,6 +193,7 @@ app.get('/calculations', (request, response) => {
     else {
         risk = "Uninsurable";
     }
+    response.type('text/plain');
 	response.send(risk);
 })
 
