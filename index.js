@@ -124,9 +124,9 @@ app.get('/calculations', (request, response) => {
     var weight = parseInt(inputs.weight);
     var sysbp = parseInt(inputs.systolic);
     var diabp = parseInt(inputs.diastolic);
-    var histdiabetes = parseInt(inputs.diabetes);
-    var histcancer = parseInt(inputs.cancer);
-    var histalzheimer = parseInt(inputs.alzheimer);
+    var histdiabetes = inputs.diabetes;
+    var histcancer = inputs.cancer;
+    var histalzheimer = inputs.alzheimer;
     var totalrisk = 0;
     var risk = "Default";
     //Age calculations.
@@ -172,13 +172,13 @@ app.get('/calculations', (request, response) => {
         totalrisk+= 0;
     }
     //Family history
-    if (histdiabetes == true) {
+    if (histdiabetes == "true") {
         totalrisk+= 10;
     }
-    if (histcancer == true) {
+    if (histcancer == "true") {
         totalrisk+= 10;
     }
-    if (histalzheimer == true) {
+    if (histalzheimer == "true") {
         totalrisk+= 10;
     }
     //Final conclusion.

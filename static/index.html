@@ -17,10 +17,10 @@
         <form action="/calculations" method="POST">
             <label for="age">Age:</label><br>
             <input type="text" id="age" name="age"><br><br>
-            <label for="Height">Height (in inches):</label><br>
-            <input type="text" id="Height" name="Height"><br><br>
-            <label for="Weight">Weight (in pounds):</label><br>
-            <input type="text" id="Weight" name="Weight"><br><br>
+            <label for="height">Height (in inches):</label><br>
+            <input type="text" id="height" name="height"><br><br>
+            <label for="weight">Weight (in pounds):</label><br>
+            <input type="text" id="weight" name="weight"><br><br>
             <label for="systolic">Blood Pressure (Systolic):</label><br>
             <input type="text" id="systolic" name="systolic"><br><br>
             <label for="diastolic">Blood Pressure (Diastolic):</label><br>
@@ -37,7 +37,17 @@
     <p id="result">This is the result: </p>
     <script>
         async function fetchCalc() {
-            const response = await fetch("/calculations")
+            const age = document.getElementById("age").value
+            const height = document.getElementById("height").value
+            const weight = document.getElementById("weight").value
+            const systolic = document.getElementById("systolic").value
+            const diastolic = document.getElementById("diastolic").value
+            const diabetes = document.getElementById("diabetes").checked
+            const cancer = document.getElementById("cancer").checked
+            const alzheimer = document.getElementById("alzheimer").checked
+		// Note the URL (fetch) string will look something like '/add-two-integers?x=2&y=1' when it is sent.
+		    const fetchString = "/calculations?age="+age+"&height="+height+"&weight="+weight+"&systolic="+systolic+"&diastolic="+diastolic+"&diabetes="+diabetes+"&cancer="+cancer+"&alzheimer="+alzheimer
+            const response = await fetch(fetchString)
             const responseText = await response.text()
             document.getElementById("result").innerHTML = responseText
         }
