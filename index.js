@@ -129,6 +129,22 @@ app.get('/calculations', (request, response) => {
     var histalzheimer = inputs.alzheimer;
     var totalrisk = 0;
     var risk = "Default";
+    if (height > 84 || height < 24) {
+        response.type('text/plain');
+        response.send('Enter Valid Height')
+    }
+    if (weight > 1000 || weight < 10) {
+        response.type('text/plain');
+        response.send('Enter Valid Weight')
+    }
+    if (sysbp > 1000 || sysbp < 10) {
+        response.type('text/plain');
+        response.send('Enter Valid Blood Pressure')
+    }
+    if (diabp > 1000 || diabp < 10) {
+        response.type('text/plain');
+        response.send('Enter Valid Blood Pressure')
+    }
     //Age calculations.
     if (age > 60) {
         totalrisk+= 30;
@@ -138,6 +154,10 @@ app.get('/calculations', (request, response) => {
     }
     else if (age > 30) {
         totalrisk+= 10;
+    }
+    else if (age > 120 || age < 1) {
+        response.type('text/plain');
+        response.send('Enter Valid Age')
     }
     else {
         totalrisk+= 0;
@@ -208,9 +228,9 @@ app.use((request, response) => {
 // Custom 500 page.
 app.use((err, request, response, next) => {
   console.error(err.message)
-  response.type('text/plain')
+  //response.type('text/plain')
   response.status(500)
-  response.send('500 - Server Error')
+  //response.send('500 - Server Error')
 })
 
 app.listen(port, () => console.log(
