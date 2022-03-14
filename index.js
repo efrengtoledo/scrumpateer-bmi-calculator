@@ -2,14 +2,10 @@ const express = require('express')
 app = express()
 
 var url = require('url');
-var bodyParser = require('body-parser');
 
 const port = process.env.PORT || 3000
 const majorVersion = 1
 const minorVersion = 2
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Use Express to publish static HTML, CSS, and JavaScript files that run in the browser. 
 app.use(express.static(__dirname + '/static'))
@@ -120,16 +116,17 @@ app.get('/batman', (request, response) => {
 	response.send(JSON.stringify(spiderMan, null, 4))
 })
 
-app.post('/calculations', (req, response) => {
+app.get('/calculations', (request, response) => {
 	console.log('Calling calculations.');
-	var age = req.body.age;
-    var height = req.body.height;
-    var weight = req.body.weight;
-    var sysbp = req.body.systolic;
-    var diabp = req.body.diastolic;
-    var histdiabetes = req.body.diabetes;
-    var histcancer = req.body.cancer;
-    var histalzheimer = req.body.alzheimer;
+    var inputs = url.parse(request.url, true).query;
+	var age = parseInt(inputs.age);
+    var height = parseInt(inputs.height);
+    var weight = parseInt(inputs.weight);
+    var sysbp = parseInt(inputs.systolic);
+    var diabp = parseInt(inputs.diastolic);
+    var histdiabetes = parseInt(inputs.diabetes);
+    var histcancer = parseInt(inputs.cancer);
+    var histalzheimer = parseInt(inputs.alzheimer);
     var totalrisk = 0;
     var risk = "Default";
     //Age calculations.
