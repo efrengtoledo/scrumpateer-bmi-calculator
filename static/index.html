@@ -34,6 +34,14 @@
             <input type="submit" value="Submit">
         </form>
     </section>
+    <p id="result">This is the result: </p>
+    <script>
+        async function fetchCalc() {
+            const response = await fetch("/calculations")
+            const responseText = await response.text()
+            document.getElementById("result").innerHTML = responseText
+        }
+    </script>
 </body>
 
 </html>

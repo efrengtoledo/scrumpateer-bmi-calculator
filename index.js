@@ -193,7 +193,7 @@ app.get('/calculations', (request, response) => {
     else {
         risk = "Uninsurable";
     }
-    console.log(risk);
+	response.send(risk);
 })
 
 // Custom 404 page.
