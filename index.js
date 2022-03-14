@@ -2,7 +2,6 @@ const express = require('express')
 app = express()
 
 var url = require('url');
-var dt = require('./date-time');
 
 const port = process.env.PORT || 3000
 const majorVersion = 1
@@ -69,9 +68,6 @@ app.get('/test', (request, response) => {
     // Return HTML.
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.write('<h3>Testing Function</h3>')
-
-    // Access function from a separate JavaScript module.
-    response.write("The date and time are currently: " + dt.myDateTime() + "<br><br>");
 
     // Show the full url from the request. 
     response.write("req.url="+request.url+"<br><br>");
