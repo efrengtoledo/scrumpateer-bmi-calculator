@@ -2,18 +2,25 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="main.css">
     <meta charset="utf-8" />
     <title>Health Insurance Risk Calculator</title>
 </head>
 
 <body>
     <h1>The Scrumpateer's Health Insurance Risk Calculator</h1>
+    <br>
+    <br>
     <section>
         <h2>Please fill out the form to discover your risk:</h2>
+        <p>Systolic blood pressure is the top number while diastolic blood pressure is the bottom number.</p>
         <form action="/formSubmission" method="POST">
             <label for="age">Age:</label><br>
             <input type="text" id="age" name="age"><br><br>
+            <label for="Height">Height (in inches):</label><br>
+            <input type="text" id="Height" name="Height"><br><br>
+            <label for="Weight">Weight (in pounds):</label><br>
+            <input type="text" id="Weight" name="Weight"><br><br>
             <label for="systolic">Blood Pressure (Systolic):</label><br>
             <input type="text" id="systolic" name="systolic"><br><br>
             <label for="diastolic">Blood Pressure (Diastolic):</label><br>
